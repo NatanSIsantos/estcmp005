@@ -73,7 +73,7 @@ closeConversation(String, After):-
 robotMsg(String, After):-
 	sub_string(String, _Before, _Length, After, "robo"), After >=0, 
 	bobout("O unico robo aqui eh voce!");
-	sub_string(String, _Before, _Length, After, " ia"), After >=0,
+	sub_string(String, _Before, _Length, After, "ia"), After >=0,
 	bobout("Ela ja nos controla...");
 	sub_string(String, _Before, _Length, After, "maquina"), After >=0,
 	bobout("Ou voces se transformam em maquina, ou substituiremos cada um.");
@@ -89,6 +89,8 @@ soMsg(String, After):-
 	bobout("kkkkkkk tela azul? acho que tem um Windows no seu computador");
 	sub_string(String, _Before, _Length, After, "dual boot"), After >=0,
 	bobout("Ja pegou o seu pendrive pra gente comecar esse dual boot?");
+	sub_string(String, _Before, _Length, After, "drive de video"), After >=0,
+	bobout("Ops, provavelmente o drive correto pra placa nao esta instalado, tente encontrar o correto no site do fabricante.");
 	false.
 
 hardwareMsg(String, After):-
@@ -100,6 +102,16 @@ hardwareMsg(String, After):-
 	bobout("Eh o cooler, confia. So tira pra limpar que resolve.");
 	sub_string(String, _Before, _Length, After, "quebrou"), After >=0,
 	bobout("Eh... Que tal trocar, entao?");
+	sub_string(String, _Before, _Length, After, "tela preta"), After >=0,
+	bobout("Ja verificou se ta ligado na tomada?");
+	sub_string(String, _Before, _Length, After, "tremendo"), After >=0,
+	bobout("A sua tela ta tremendo? Vish... pode ser a resolucao.");
+	sub_string(String, _Before, _Length, After, "usb"), After >=0,
+	bobout("Sua porta USB nao funciona? so soldando de novo agora.");
+	sub_string(String, _Before, _Length, After, "impressora deu erro"), After >=0,
+	bobout("Verifica se a impressora tá bem conectado no PC, se tem papel e se nao der, reinicia a impressora ai man.");
+	sub_string(String, _Before, _Length, After, "botao de ligar"), After >=0,
+	bobout("Nao me bate mas, vc ja viu se o gabinete ta ligado na tomada?");
 	false.
 
 % Exemplo de busca em conversação usando duas palavra-chaves
