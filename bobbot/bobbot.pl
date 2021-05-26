@@ -20,7 +20,7 @@ bobout(Text):-
 % Entrada formatada paras frases do usuário
 usrin(S1, S2):-
 	nl,
-	write("User:   "),
+	write(">>   "),
 	read_string(user_input,"\n", "\r\t ", _, S1),
 	% convertendo para letras minusculas 
 	string_lower(S1, S2).
@@ -30,6 +30,8 @@ conversation():-
 	usrin(_S1, S2),
 	% Mensagens de conversação abaixo
 	robotMsg(S2, _ExistRobot),
+	soMsg(S2, _ExistSo),
+	hardwareMsg(S2, _ExistHardware),
 	computerMsg(S2, _ExistComp1, _ExistComp2),
 	% Mensagens de despedida abaixo
 	bye(S2, ExistBye), ExistBye >= 0;
@@ -46,6 +48,8 @@ bye(String, After):-
 	bobout("Flws");
 	sub_string(String, _Before, _Length, After, "exit"), After >=0,
 	write("Bob foi dormir...");
+	sub_string(String, _Before, _Length, After, "sair"), After >=0,
+	write("Bob já está de saída...");
 	sub_string(String, _Before, _Length, After, "quit"), After >=0,
 	write("Bob parou de executar...");
 	sub_string(String, _Before, _Length, After, "adeus"), After >=0,
@@ -61,6 +65,29 @@ robotMsg(String, After):-
 	bobout("Ela ja nos controla...");
 	sub_string(String, _Before, _Length, After, "maquina"), After >=0,
 	bobout("Ou voces se transformam em maquina, ou substituiremos cada um.");
+	true.
+	
+% Rastreando palavras que envolvam sistema operacional
+soMsg(String, After):-
+	sub_string(String, _Before, _Length, After, "windows"), After >=0, 
+	bobout("Calma la..... Windows? serio mesmo?");
+	sub_string(String, _Before, _Length, After, "linux"), After >=0,
+	bobout("Tudo bem que o Linux nao eh tão facil, mas voce nunca ouviu falar em Google?");
+	sub_string(String, _Before, _Length, After, "tela azul"), After >=0,
+	bobout("kkkkkkk tela azul? acho que tem um Windows no seu computador");
+	sub_string(String, _Before, _Length, After, "dual boot"), After >=0,
+	bobout("Ja pegou o seu pendrive pra gente começar esse dual boot?");
+	true.
+
+hardwareMsg(String, After):-
+	sub_string(String, _Before, _Length, After, "travou"), After >=0, 
+	bobout("Que tal comprar mais memória?");
+	sub_string(String, _Before, _Length, After, "lento"), After >=0,
+	bobout("Troca esse Celeron aí...");
+	sub_string(String, _Before, _Length, After, "esquentando"), After >=0,
+	bobout("Eh o cooler, confia. So tira pra limpar que resolve.");
+	sub_string(String, _Before, _Length, After, "quebrou"), After >=0,
+	bobout("Eh... Que tal trocar, entao?");
 	true.
 
 % Exemplo de busca em conversação usando duas palavra-chaves
