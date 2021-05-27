@@ -39,6 +39,16 @@ matou(anakin, kenobi).
 matou(sidious, windu).
 matou(sidious, anakin).
 
+mestre(yoda, quigon).
+mestre(yoda, luke).
+mestre(yoda, dooku).
+mestre(quigon, kenobi).
+mestre(kenobi, anakin).
+mestre(kenobi, luke).
+mestre(sidious, maul).
+mestre(sidious, dooku).
+mestre(sidious, anakin).
+
 darkside(X) :- jedi(X), sith(X).
 
 pai(X,Y) :- criou(X,Y), homem(X).
@@ -52,4 +62,4 @@ avoh(X, Y) :- mae(X, Z), mae(Z, Y) | mae(X, Z), pai(Z, Y).
 
 irmao(X,Y) :- criou(Z,X), criou(Z,Y), X \== Y. 
 
-tio(X,Y) :- irmao(X,Z), pai(Z,Y) | irmao(Z, X), mae(Z, Y).
+tio(X,Y) :- irmao(X,Z), pai(Z,Y) | irmao(Z, X), mae(Z, Y).darkside
