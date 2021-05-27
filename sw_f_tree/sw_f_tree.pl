@@ -62,4 +62,4 @@ avoh(X, Y) :- mae(X, Z), mae(Z, Y) | mae(X, Z), pai(Z, Y).
 
 irmao(X,Y) :- criou(Z,X), criou(Z,Y), X \== Y. 
 
-tio(X,Y) :- irmao(X,Z), pai(Z,Y) | irmao(Z, X), mae(Z, Y).darkside
+tio(X,Y) :- irmao(X,Z), pai(Z,Y) | irmao(Z, X), mae(Z, Y).
