@@ -18,6 +18,7 @@ criou(padme, leia).
 criou(jobal, padme).
 criou(shmi, vader).
 
+jedi(anakin).
 jedi(dooku).
 jedi(kenobi).
 jedi(yoda).
